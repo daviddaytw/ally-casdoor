@@ -107,18 +107,18 @@ The driver implementation is a standard TypeScript class that extends the base `
 - [x] I have renamed all `YourDriver` references to a more meaningful driver name inside the `src/YourDriver/index.ts` file.
 - [x] I have renamed the `YourDriverProvider` inside the `providers/index.ts` file.
 - [x] I have updated the driver name in the `Ally.extend` method call inside the `providers/index.ts` file.
-- [ ] I have defined the `authorizeUrl` class property.
-- [ ] I have defined the `accessTokenUrl` class property.
-- [ ] I have defined the `userInfoUrl` class property.
-- [ ] I have defined the `codeParamName` class property.
-- [ ] I have defined the `errorParamName` class property.
-- [ ] I have defined the `stateCookieName` class property.
-- [ ] I have defined the `stateParamName` class property.
-- [ ] I have defined the `scopeParamName` class property.
-- [ ] I have defined the `scopesSeparator` class property.
-- [ ] I have implemented the `accessDenied` class method.
-- [ ] I have implemented the `user` class method.
-- [ ] I have implemented the `userFromToken` class method.
+- [x] I have defined the `authorizeUrl` class property.
+- [x] I have defined the `accessTokenUrl` class property.
+- [x] I have defined the `userInfoUrl` class property.
+- [x] I have defined the `codeParamName` class property.
+- [x] I have defined the `errorParamName` class property.
+- [x] I have defined the `stateCookieName` class property.
+- [x] I have defined the `stateParamName` class property.
+- [x] I have defined the `scopeParamName` class property.
+- [x] I have defined the `scopesSeparator` class property.
+- [x] I have implemented the `accessDenied` class method.
+- [x] I have implemented the `user` class method.
+- [x] I have implemented the `userFromToken` class method.
 - [x] I have updated the `standalone.ts` file to export the renamed driver file name.
 
 ## Testing the driver
@@ -150,8 +150,8 @@ Make sure to finish the following tasks before releasing your package.
 
 - [x] I have renamed the `name` and `description` properties inside the `package.json` file.
 - [x] I have renamed the `adonisjs.types` and `adonisjs.providers` properties to use the package name inside the `package.json` file.
-- [ ] I have updated the post-install instructions inside the `instructions.md` file.
-- [ ] I have updated the `adonisjs.env` property inside the `package.json` file to use the correct driver name for environment variables.
+- [x] I have updated the post-install instructions inside the `instructions.md` file.
+- [x] I have updated the `adonisjs.env` property inside the `package.json` file to use the correct driver name for environment variables.
 
 ## FAQ's
 

@@ -45,8 +45,8 @@
   "adonisjs": {
     "instructionsMd": "./build/instructions.md",
     "env": {
-      "YOUR_DRIVER_CLIENT_ID": "",
-      "YOUR_DRIVER_CLIENT_SECRET": ""
+      "CASDOOR_DRIVER_CLIENT_ID": "",
+      "CASOOR_DRIVER_CLIENT_SECRET": ""
     },
     "types": "ally-casdoor-driver",
     "providers": [
