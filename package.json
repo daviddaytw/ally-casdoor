@@ -1,7 +1,7 @@
 {
-  "name": "ally-custom-driver",
+  "name": "ally-casdoor-driver",
   "version": "0.0.0",
-  "description": "A boilerplate for a custom ally driver",
+  "description": "A casdoor driver of AdonisJS ally.",
   "main": "build/providers/index.js",
   "files": [
     "build/src",
@@ -48,9 +48,9 @@
       "YOUR_DRIVER_CLIENT_ID": "",
       "YOUR_DRIVER_CLIENT_SECRET": ""
     },
-    "types": "ally-custom-driver",
+    "types": "ally-casdoor-driver",
     "providers": [
-      "ally-custom-driver"
+      "ally-casdoor-driver"
     ]
   }
 }

@@ -104,9 +104,9 @@ The driver implementation is a standard TypeScript class that extends the base `
 
 ## Development checklist
 
-- [ ] I have renamed all `YourDriver` references to a more meaningful driver name inside the `src/YourDriver/index.ts` file.
-- [ ] I have renamed the `YourDriverProvider` inside the `providers/index.ts` file.
-- [ ] I have updated the driver name in the `Ally.extend` method call inside the `providers/index.ts` file.
+- [x] I have renamed all `YourDriver` references to a more meaningful driver name inside the `src/YourDriver/index.ts` file.
+- [x] I have renamed the `YourDriverProvider` inside the `providers/index.ts` file.
+- [x] I have updated the driver name in the `Ally.extend` method call inside the `providers/index.ts` file.
 - [ ] I have defined the `authorizeUrl` class property.
 - [ ] I have defined the `accessTokenUrl` class property.
 - [ ] I have defined the `userInfoUrl` class property.
@@ -119,7 +119,7 @@ The driver implementation is a standard TypeScript class that extends the base `
 - [ ] I have implemented the `accessDenied` class method.
 - [ ] I have implemented the `user` class method.
 - [ ] I have implemented the `userFromToken` class method.
-- [ ] I have updated the `standalone.ts` file to export the renamed driver file name.
+- [x] I have updated the `standalone.ts` file to export the renamed driver file name.
 
 ## Testing the driver
 
@@ -148,8 +148,8 @@ You can test the driver by installing it locally inside your AdonisJS applicatio
 
 Make sure to finish the following tasks before releasing your package.
 
-- [ ] I have renamed the `name` and `description` properties inside the `package.json` file.
-- [ ] I have renamed the `adonisjs.types` and `adonisjs.providers` properties to use the package name inside the `package.json` file.
+- [x] I have renamed the `name` and `description` properties inside the `package.json` file.
+- [x] I have renamed the `adonisjs.types` and `adonisjs.providers` properties to use the package name inside the `package.json` file.
 - [ ] I have updated the post-install instructions inside the `instructions.md` file.
 - [ ] I have updated the `adonisjs.env` property inside the `package.json` file to use the correct driver name for environment variables.
 

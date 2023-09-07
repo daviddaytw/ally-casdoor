@@ -1,14 +1,14 @@
 import type { ApplicationContract } from '@ioc:Adonis/Core/Application'
 
-export default class YourDriverProvider {
+export default class CasdoorDriverProvider {
   constructor(protected app: ApplicationContract) {}
 
   public async boot() {
     const Ally = this.app.container.resolveBinding('Adonis/Addons/Ally')
-    const { YourDriver } = await import('../src/YourDriver')
+    const { CasdoorDriver } = await import('../src/CasdoorDriver')
 
-    Ally.extend('yourdriver', (_, __, config, ctx) => {
-      return new YourDriver(ctx, config)
+    Ally.extend('CasdoorDriver', (_, __, config, ctx) => {
+      return new CasdoorDriver(ctx, config)
     })
   }
 }

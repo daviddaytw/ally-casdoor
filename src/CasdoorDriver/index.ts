@@ -19,11 +19,8 @@ import { Oauth2Driver, ApiRequest } from '@adonisjs/ally/build/standalone'
  * must have "token" and "type" and you are free to add
  * more properties.
  *
- * ------------------------------------------------
- * Change "YourDriver" to something more relevant
- * ------------------------------------------------
  */
-export type YourDriverAccessToken = {
+export type CasdoorDriverAccessToken = {
   token: string
   type: 'bearer'
 }
@@ -32,22 +29,16 @@ export type YourDriverAccessToken = {
  * Define a union of scopes your driver accepts. Here's an example of same
  * https://github.com/adonisjs/ally/blob/develop/adonis-typings/ally.ts#L236-L268
  *
- * ------------------------------------------------
- * Change "YourDriver" to something more relevant
- * ------------------------------------------------
  */
-export type YourDriverScopes = string
+export type CasdoorDriverScopes = string
 
 /**
  * Define the configuration options accepted by your driver. It must have the following
  * properties and you are free add more.
  *
- * ------------------------------------------------
- * Change "YourDriver" to something more relevant
- * ------------------------------------------------
  */
-export type YourDriverConfig = {
-  driver: 'YourDriverName'
+export type CasdoorDriverConfig = {
+  driver: 'casdoor'
   clientId: string
   clientSecret: string
   callbackUrl: string
@@ -59,11 +50,8 @@ export type YourDriverConfig = {
 /**
  * Driver implementation. It is mostly configuration driven except the user calls
  *
- * ------------------------------------------------
- * Change "YourDriver" to something more relevant
- * ------------------------------------------------
  */
-export class YourDriver extends Oauth2Driver<YourDriverAccessToken, YourDriverScopes> {
+export class CasdoorDriver extends Oauth2Driver<CasdoorDriverAccessToken, CasdoorDriverScopes> {
   /**
    * The URL for the redirect request. The user will be redirected on this page
    * to authorize the request.
@@ -105,7 +93,7 @@ export class YourDriver extends Oauth2Driver<YourDriverAccessToken, YourDriverSc
    * approach is to prefix the oauth provider name to `oauth_state` value. For example:
    * For example: "facebook_oauth_state"
    */
-  protected stateCookieName = 'YourDriver_oauth_state'
+  protected stateCookieName = 'CasdoorDriver_oauth_state'
 
   /**
    * Parameter name to be used for sending and receiving the state from.
@@ -125,7 +113,7 @@ export class YourDriver extends Oauth2Driver<YourDriverAccessToken, YourDriverSc
    */
   protected scopesSeparator = ' '
 
-  constructor(ctx: HttpContextContract, public config: YourDriverConfig) {
+  constructor(ctx: HttpContextContract, public config: CasdoorDriverConfig) {
     super(ctx, config)
 
     /**
@@ -142,7 +130,7 @@ export class YourDriver extends Oauth2Driver<YourDriverAccessToken, YourDriverSc
    * is made by the base implementation of "Oauth2" driver and this is a
    * hook to pre-configure the request.
    */
-  // protected configureRedirectRequest(request: RedirectRequest<YourDriverScopes>) {}
+  // protected configureRedirectRequest(request: RedirectRequest<CasdoorDriverScopes>) {}
 
   /**
    * Optionally configure the access token request. The actual request is made by
@@ -168,7 +156,7 @@ export class YourDriver extends Oauth2Driver<YourDriverAccessToken, YourDriverSc
    */
   public async user(
     callback?: (request: ApiRequest) => void
-  ): Promise<AllyUserContract<YourDriverAccessToken>> {
+  ): Promise<AllyUserContract<CasdoorDriverAccessToken>> {
     const accessToken = await this.accessToken()
     const request = this.httpClient(this.config.userInfoUrl || this.userInfoUrl)
 
