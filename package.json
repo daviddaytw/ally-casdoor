@@ -1,6 +1,6 @@
 {
   "name": "ally-casdoor-driver",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A casdoor driver of AdonisJS ally.",
   "main": "build/providers/index.js",
   "files": [
@@ -24,7 +24,7 @@
     "adonisjs",
     "adonis-ally"
   ],
-  "author": "",
+  "author": "David Day <me@davidday.tw> (https://davidday.tw)",
   "license": "MIT",
   "devDependencies": {
     "@adonisjs/ally": "^4.0.0",
