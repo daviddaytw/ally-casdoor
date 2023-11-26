@@ -30,8 +30,9 @@ node ace configure ally-casdoor-driver
 
 ```ts
 CASDOOR_DRIVER_CLIENT_ID: Env.schema.string(),
-CASOOR_DRIVER_CLIENT_SECRET: Env.schema.string(),
-CASOOR_DRIVER_CALLBACK_URL: Env.schema.string(),
+CASDOOR_DRIVER_CLIENT_SECRET: Env.schema.string(),
+CASDOOR_DRIVER_CALLBACK_URL: Env.schema.string(),
+CASDOOR_DRIVER_CASDOOR_ROOT: Env.schema.string(),
 ```
 
 ### 4. Add variables to `config/ally.ts` file. 
@@ -42,8 +43,9 @@ const allyConfig: AllyConfig = {
   casdoor: {
     driver: 'casdoor',
     clientId: Env.get('CASDOOR_DRIVER_CLIENT_ID'),
-    clientSecret: Env.get('CASOOR_DRIVER_CLIENT_SECRET'),
-    callbackUrl: Env.get('CASOOR_DRIVER_CALLBACK_URL'),
+    clientSecret: Env.get('CASDOOR_DRIVER_CLIENT_SECRET'),
+    callbackUrl: Env.get('CASDOOR_DRIVER_CALLBACK_URL'),
+    casdoorRoot: Env.get('CASDOOR_DRIVER_CASDOOR_ROOT'),
   }
 }
 ```

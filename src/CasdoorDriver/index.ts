@@ -42,6 +42,7 @@ export type CasdoorDriverConfig = {
   clientId: string
   clientSecret: string
   callbackUrl: string
+  casdoorRoot: string
   authorizeUrl?: string
   accessTokenUrl?: string
   userInfoUrl?: string
@@ -114,7 +115,12 @@ export class CasdoorDriver extends Oauth2Driver<CasdoorDriverAccessToken, Casdoo
   protected scopesSeparator = ' '
 
   constructor(ctx: HttpContextContract, public config: CasdoorDriverConfig) {
-    super(ctx, config)
+    super(ctx, {
+      authorizeUrl: config.casdoorRoot + '/login/oauth/authorize',
+      accessTokenUrl: config.casdoorRoot + '/api/login/oauth/access_token',
+      userInfoUrl: config.casdoorRoot + '/api/userinfo',
+      ...config,
+    })
 
     /**
      * Extremely important to call the following method to clear the

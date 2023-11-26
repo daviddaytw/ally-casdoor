@@ -46,7 +46,9 @@
     "instructionsMd": "./build/instructions.md",
     "env": {
       "CASDOOR_DRIVER_CLIENT_ID": "",
-      "CASOOR_DRIVER_CLIENT_SECRET": ""
+      "CASDOOR_DRIVER_CLIENT_SECRET": "",
+      "CASDOOR_DRIVER_CALLBACK_URL": "",
+      "CASDOOR_DRIVER_CASDOOR_ROOT": ""
     },
     "types": "ally-casdoor-driver",
     "providers": [
