@@ -50,6 +50,10 @@ const allyConfig: AllyConfig = {
 }
 ```
 
+## Scope
+
+You can pass an string of scopes in [the configuration](https://docs.adonisjs.com/guides/auth/social#define-scopes). According to [Casdoor's documentation](https://casdoor.org/docs/how-to-connect/oauth/#available-scopes), available scopes are `'openid', 'profile', 'email', 'address', 'phone'`.
+
 ## How it works
 
 You can learn more about [AdonisJS Ally](https://docs.adonisjs.com/guides/auth/social) in the documentation. And learn about the implementation in the [ally-driver-boilerplate](https://github.com/adonisjs-community/ally-driver-boilerplate) repository.
