@@ -1,6 +1,10 @@
 {
   "name": "ally-casdoor-driver",
   "description": "A casdoor driver of AdonisJS ally.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daviddaytw/ally-casdoor.git"
+  },
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
@@ -36,7 +40,8 @@
   "keywords": [
     "social-auth",
     "adonisjs-ally",
-    "adonisjs"
+    "adonisjs",
+    "casdoor"
   ],
   "eslintConfig": {
     "extends": "@adonisjs/eslint-config/package"
