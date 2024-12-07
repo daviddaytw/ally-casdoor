@@ -1,58 +1,44 @@
 {
   "name": "ally-casdoor-driver",
-  "version": "1.0.0",
   "description": "A casdoor driver of AdonisJS ally.",
-  "main": "build/providers/index.js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
   "files": [
-    "build/src",
-    "build/providers",
-    "build/standalone.js",
-    "build/standalone.d.ts",
-    "build/instructions.md"
+    "build/index.js",
+    "build/index.d.ts",
+    "build/src"
   ],
   "scripts": {
-    "clean": "del build",
-    "copyfiles": "copyfiles \"instructions.md\" build",
-    "compile": "npm run lint && npm run clean && tsc",
-    "build": "npm run compile && npm run copyfiles",
-    "prepublishOnly": "npm run build",
     "lint": "eslint . --ext=.ts",
     "format": "prettier --write .",
-    "version": "npm run build"
+    "typecheck": "tsc --noEmit",
+    "pretest": "npm run lint",
+    "build": "tsc"
   },
-  "keywords": [
-    "adonisjs",
-    "adonis-ally"
-  ],
-  "author": "David Day <me@davidday.tw> (https://davidday.tw)",
-  "license": "MIT",
   "devDependencies": {
-    "@adonisjs/ally": "^4.0.0",
-    "@adonisjs/core": "^5.1.8",
-    "@types/node": "^15.12.2",
-    "del-cli": "^3.0.1",
-    "eslint": "^7.28.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-adonis": "^1.3.2",
-    "eslint-plugin-prettier": "^3.4.0",
-    "prettier": "^2.3.1",
-    "typescript": "^4.3.2"
+    "@adonisjs/ally": "^5.0.0-7",
+    "@adonisjs/core": "^6.1.5-32",
+    "@adonisjs/eslint-config": "^1.3.0",
+    "@adonisjs/prettier-config": "^1.3.0",
+    "@adonisjs/tsconfig": "^1.3.0",
+    "@swc/core": "^1.6.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "@adonisjs/ally": "^4.0.0",
-    "@adonisjs/core": "^5.0.0"
+    "@adonisjs/ally": "^5.0.0-7",
+    "@adonisjs/core": "^6.1.5-32"
   },
-  "adonisjs": {
-    "instructionsMd": "./build/instructions.md",
-    "env": {
-      "CASDOOR_DRIVER_CLIENT_ID": "",
-      "CASDOOR_DRIVER_CLIENT_SECRET": "",
-      "CASDOOR_DRIVER_CALLBACK_URL": "",
-      "CASDOOR_DRIVER_CASDOOR_ROOT": ""
-    },
-    "types": "ally-casdoor-driver",
-    "providers": [
-      "ally-casdoor-driver"
-    ]
-  }
+  "author": "David Day <me@davidday.tw> (https://github.com/daviddaytw)",
+  "license": "MIT",
+  "keywords": [
+    "social-auth",
+    "adonisjs-ally",
+    "adonisjs"
+  ],
+  "eslintConfig": {
+    "extends": "@adonisjs/eslint-config/package"
+  },
+  "prettier": "@adonisjs/prettier-config"
 }

@@ -3,22 +3,20 @@
 | Ally Oauth driver
 |--------------------------------------------------------------------------
 |
-| This is a dummy implementation of the Oauth driver. Make sure you
-|
-| - Got through every line of code
-| - Read every comment
+| Make sure you through the code and comments properly and make necessary
+| changes as per the requirements of your implementation.
 |
 */
 
-import type { AllyUserContract } from '@ioc:Adonis/Addons/Ally'
-import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { Oauth2Driver, ApiRequest, RedirectRequest } from '@adonisjs/ally/build/standalone'
+import { Oauth2Driver } from '@adonisjs/ally'
+import type { HttpContext } from '@adonisjs/core/http'
+import type { AllyDriverContract, AllyUserContract, ApiRequestContract } from '@adonisjs/ally/types'
 
 /**
- * Define the access token object properties in this type. It
- * must have "token" and "type" and you are free to add
- * more properties.
  *
+ * Access token returned by your driver implementation. An access
+ * token must have "token" and "type" properties and you may
+ * define additional properties (if needed)
  */
 export type CasdoorDriverAccessToken = {
   token: string
@@ -26,19 +24,14 @@ export type CasdoorDriverAccessToken = {
 }
 
 /**
- * Define a union of scopes your driver accepts. Here's an example of same
- * https://github.com/adonisjs/ally/blob/develop/adonis-typings/ally.ts#L236-L268
- *
+ * Scopes accepted by the driver implementation.
  */
 export type CasdoorDriverScopes = 'openid' | 'profile' | 'email' | 'address' | 'phone'
 
 /**
- * Define the configuration options accepted by your driver. It must have the following
- * properties and you are free add more.
- *
+ * The configuration accepted by the driver implementation.
  */
 export type CasdoorDriverConfig = {
-  driver: 'casdoor'
   clientId: string
   clientSecret: string
   callbackUrl: string
@@ -49,10 +42,13 @@ export type CasdoorDriverConfig = {
 }
 
 /**
- * Driver implementation. It is mostly configuration driven except the user calls
- *
+ * Driver implementation. It is mostly configuration driven except the API call
+ * to get user info.
  */
-export class CasdoorDriver extends Oauth2Driver<CasdoorDriverAccessToken, CasdoorDriverScopes> {
+export class CasdoorDriver
+  extends Oauth2Driver<CasdoorDriverAccessToken, CasdoorDriverScopes>
+  implements AllyDriverContract<CasdoorDriverAccessToken, CasdoorDriverScopes>
+{
   /**
    * The URL for the redirect request. The user will be redirected on this page
    * to authorize the request.
@@ -114,7 +110,10 @@ export class CasdoorDriver extends Oauth2Driver<CasdoorDriverAccessToken, Casdoo
    */
   protected scopesSeparator = ' '
 
-  constructor(ctx: HttpContextContract, public config: CasdoorDriverConfig) {
+  constructor(
+    ctx: HttpContext,
+    public config: CasdoorDriverConfig
+  ) {
     super(ctx, {
       authorizeUrl: config.casdoorRoot + '/login/oauth/authorize',
       accessTokenUrl: config.casdoorRoot + '/api/login/oauth/access_token',
@@ -151,7 +150,7 @@ export class CasdoorDriver extends Oauth2Driver<CasdoorDriverAccessToken, Casdoo
    * Update the implementation to tell if the error received during redirect
    * means "ACCESS DENIED".
    */
-  public accessDenied() {
+  accessDenied() {
     return this.ctx.request.input('error') === 'user_denied'
   }
 
@@ -162,17 +161,17 @@ export class CasdoorDriver extends Oauth2Driver<CasdoorDriverAccessToken, Casdoo
    *
    * https://github.com/adonisjs/ally/blob/develop/src/Drivers/Google/index.ts#L191-L199
    */
-  public async user(
-    callback?: (request: ApiRequest) => void
+  async user(
+    callback?: (request: ApiRequestContract) => void
   ): Promise<AllyUserContract<CasdoorDriverAccessToken>> {
     const accessToken = await this.accessToken()
 
     return this.userFromToken(accessToken.token, callback)
   }
 
-  public async userFromToken(
+  async userFromToken(
     accessToken: string,
-    callback?: (request: ApiRequest) => void
+    callback?: (request: ApiRequestContract) => void
   ): Promise<AllyUserContract<{ token: string; type: 'bearer' }>> {
     const request = this.httpClient(this.config.userInfoUrl || this.userInfoUrl)
     request.header('Authorization', `Bearer ${accessToken}`)
@@ -181,7 +180,7 @@ export class CasdoorDriver extends Oauth2Driver<CasdoorDriverAccessToken, Casdoo
 
     /**
      * Allow end user to configure the request. This should be called after your custom
-     * configuration, so that the user can override them (if required)
+     * configuration, so that the user can override them (if needed)
      */
     if (typeof callback === 'function') {
       callback(request)
@@ -200,4 +199,12 @@ export class CasdoorDriver extends Oauth2Driver<CasdoorDriverAccessToken, Casdoo
       original: user,
     }
   }
+}
+
+/**
+ * The factory function to reference the driver implementation
+ * inside the "config/ally.ts" file.
+ */
+export function CasdoorDriverService(config: CasdoorDriverConfig): (ctx: HttpContext) => CasdoorDriver {
+  return (ctx) => new CasdoorDriver(ctx, config)
 }
