@@ -14,7 +14,8 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "pretest": "npm run lint",
-    "build": "tsc"
+    "build": "tsc",
+    "test": ""
   },
   "devDependencies": {
     "@adonisjs/ally": "^5.0.0-7",

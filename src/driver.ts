@@ -8,7 +8,7 @@
 |
 */
 
-import { Oauth2Driver } from '@adonisjs/ally'
+import { Oauth2Driver, RedirectRequest } from '@adonisjs/ally'
 import type { HttpContext } from '@adonisjs/core/http'
 import type { AllyDriverContract, AllyUserContract, ApiRequestContract } from '@adonisjs/ally/types'
 
@@ -205,6 +205,8 @@ export class CasdoorDriver
  * The factory function to reference the driver implementation
  * inside the "config/ally.ts" file.
  */
-export function CasdoorDriverService(config: CasdoorDriverConfig): (ctx: HttpContext) => CasdoorDriver {
+export function CasdoorDriverService(
+  config: CasdoorDriverConfig
+): (ctx: HttpContext) => CasdoorDriver {
   return (ctx) => new CasdoorDriver(ctx, config)
 }
