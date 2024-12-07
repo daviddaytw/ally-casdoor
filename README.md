@@ -1,6 +1,8 @@
 # Adonis Ally Casdoor Driver
 
 [![NPM version](https://img.shields.io/npm/v/ally-casdoor-driver.svg)](https://www.npmjs.com/package/ally-casdoor-driver)
+![NPM Downloads](https://img.shields.io/npm/dm/ally-casdoor-driver)
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/daviddaytw/ally-casdoor)
 
 A [Casdoor](https://casdoor.org/) driver for [AdonisJS Ally](https://docs.adonisjs.com/guides/auth/social)
 
